@@ -21,7 +21,7 @@ module.exports = {
     'prefer-rest-params': 'off',
     '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }]
   },
-  ignorePatterns: ['dist/**/*', 'node_modules/**/*'],
+  ignorePatterns: ['dist/**/*', 'node_modules/**/*', '*.html'],
   overrides: [
     {
       files: ['*.cjs'],

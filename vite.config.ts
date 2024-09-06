@@ -62,7 +62,7 @@ export default defineConfig({
   },
   plugins: [mockServerPlugin()],
   server: {
-    port: 3000,
+    port: 8080,
     open: true
   }
 })
