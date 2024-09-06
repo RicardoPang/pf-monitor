@@ -5,12 +5,15 @@
 #### 1. 安装
 
 ```bash
-npm install
+npm install https://github.com/RicardoPang/pf-monitor.git
 ```
 
 #### 2. 引用
 
 ```js
+// 导入依赖包
+npm i pf-monitor
+
 // 整体导入
 import PfMonitor from 'pf-monitor'
 PfMonitor.init()
@@ -27,6 +30,6 @@ init({ jsError: true, xhr: true, blankScreen: false, timing: false })
 
 ### 本地运行
 
-- git clone
+- git clone https://github.com/RicardoPang/pf-monitor.git
 - npm install
 - npm run dev

@@ -1,6 +1,6 @@
 {
   "name": "pf-monitor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "ricardopang",
   "description": "前端监控SDK",
   "main": "dist/index.es.js",
