@@ -1,0 +1,73 @@
+{
+  "name": "pf-monitor",
+  "version": "0.0.1",
+  "author": "ricardopang",
+  "description": "前端监控SDK",
+  "main": "dist/index.es.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "keywords": [
+    "pf-monitor",
+    "monitor",
+    "前端埋点",
+    "数据上报",
+    "分析和计算",
+    "可视化展示",
+    "监控报警"
+  ],
+  "files": [
+    "dist"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --outDir dist/es --project tsconfig.build.json && vue-tsc --outDir dist/lib --project tsconfig.build.json && vite build",
+    "type-check": "vue-tsc --build --force",
+    "lint": "eslint . --ext .js,.cjs,.ts,.tsx --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "prepare": "if [ ! -d .git ]; then git init; fi && husky install",
+    "commit": "cz",
+    "test": "vitest --run --passWithNoTests",
+    "test:cov": "npm run test -- --coverage"
+  },
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@rushstack/eslint-patch": "^1.8.0",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/lodash-es": "^4.17.6",
+    "@types/node": "^20.16.5",
+    "@types/user-agents": "^1.0.4",
+    "@vitest/coverage-v8": "^0.32.0",
+    "@vue/tsconfig": "^0.5.1",
+    "commitizen": "^4.3.0",
+    "consola": "^3.2.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-vue": "^9.23.0",
+    "husky": "^8.0.0",
+    "jsdom": "^21.1.0",
+    "npm-run-all2": "^6.1.2",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.1",
+    "typescript": "~5.4.0",
+    "user-agent": "^1.0.4",
+    "vite": "^5.2.8",
+    "vite-plugin-dts": "^3.9.1",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^0.34.6",
+    "vue-tsc": "^2.0.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

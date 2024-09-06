@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>前端监控</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <div id="container">
+      <div
+        class="content"
+        style="
+          width: 600px;
+          height: 600px;
+          word-wrap: break-word;
+          background-color: gray;
+        "
+      >
+        <button id="clickBtn" onclick="clickMe()">点我</button>
+        <input type="button" value="点击抛出错误" onclick="errorClick()" />
+        <input
+          type="button"
+          value="点击抛出Promise错误"
+          onclick="promiseErrorClick()"
+        />
+        <input
+          id="successBtn"
+          type="button"
+          value="ajax成功请求"
+          onclick="sendSuccess()"
+        />
+        <input
+          id="errorBtn"
+          type="button"
+          value="ajax失败请求"
+          onclick="sendError()"
+        />
+        <button id="longTaskBtn">执行longTask</button>
+      </div>
+    </div>
+    <script>
+      function clickMe() {
+        let start = Date.now()
+        while (Date.now() - start < 1000) {}
+      }
+      function errorClick() {
+        window.someVar.error = 'error'
+      }
+      function promiseErrorClick() {
+        new Promise(function (resolve, reject) {
+          window.someVar.error = 'error'
+        })
+      }
+      function sendSuccess() {
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', '/success', true)
+        xhr.responseType = 'json'
+        xhr.onload = function () {
+          console.log(xhr.response)
+        }
+        xhr.send()
+      }
+      function sendError() {
+        const xhr = new XMLHttpRequest()
+        xhr.open('POST', '/error', true)
+        xhr.responseType = 'json'
+        xhr.onload = function () {
+          console.log(xhr.response)
+        }
+        xhr.onerror = function () {
+          console.log('error')
+        }
+        xhr.send('name=pf')
+      }
+      setTimeout(() => {
+        let content = document.getElementsByClassName('content')[0]
+        let h1 = document.createElement('h1')
+        h1.innerHTML = '我是这个页面中最有意义的内容'
+        h1.setAttribute('elementtiming', 'meaningful')
+        content.appendChild(h1)
+      }, 2000)
+
+      let longTaskBtn = document.getElementById('longTaskBtn')
+      longTaskBtn.addEventListener('click', longTask)
+      function longTask() {
+        let start = Date.now()
+        console.log('longTask开始 start', start)
+        while (Date.now() < 200 + start) {}
+        console.log('longTask结束 end', Date.now() - start)
+      }
+    </script>
+    <script type="module">
+      import { init } from './index.ts'
+
+      // 初始化监控
+      init({
+        jsError: true,
+        xhr: true,
+        blankScreen: true,
+        timing: true,
+        longTask: true,
+        trackPageView: true
+      })
+    </script>
+    <script src="somelink.js"></script>
+  </body>
+</html>
