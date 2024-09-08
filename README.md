@@ -2,13 +2,17 @@
 
 ### 快速开始
 
-#### 1. 安装
+#### 1. 本地运行
 
 ```bash
-npm install https://github.com/RicardoPang/pf-monitor.git
+git clone https://github.com/RicardoPang/pf-monitor.git
+
+npm install
+
+npm run dev
 ```
 
-#### 2. 引用
+#### 2. 安装
 
 ```js
 // 导入依赖包
@@ -27,9 +31,3 @@ injectXHR()
 import { init } from 'pf-monitor'
 init({ jsError: true, xhr: true, blankScreen: false, timing: false })
 ```
-
-### 本地运行
-
-- git clone https://github.com/RicardoPang/pf-monitor.git
-- npm install
-- npm run dev
